@@ -7,6 +7,7 @@
 
 // Request user name
 // Request loan amount
+// Request interest rate
 // Request duration of loan
 // Determine amount of interest paid annually and divide by 12
 // Determine the loan duration in months
@@ -30,6 +31,14 @@ let loanAmount = rlSync.question();
 while (invalidNumber(loanAmount)) {
   prompt("That is invalid, please enter the correct number.");
   loanAmount = rlSync.question();
+}
+
+prompt("What is the interest rate?");
+let interestRate = rlSync.question();
+
+while (invalidNumber(interestRate)) {
+  prompt("That is invalid, please enter the correct number.");
+  interestRate = rlSync.question();
 }
 
 prompt("Please enter the duration of your loan:");
