@@ -22,24 +22,25 @@ function isInvalidNumber(number) {
   return number.trim() === "" || number < 0 || Number.isNaN(Number(number));
 }
 
-let validAnswer = "Please enter a number 0 or greater.";
+let validAnswer = "Please enter a number greater than 0.";
 
 prompt("Hello, Welcome to the Loan Calculator");
 
 while (true) {
   prompt("What is your loan amount?");
-  let loan = readline.question();
+  let amount = readline.question();
 
-  while (isInvalidNumber(loan)) {
+  while (isInvalidNumber(amount)) {
     console.log(`${validAnswer}`);
-    loan = readline.question();
+    amount = readline.question();
   }
 
   prompt("What is your interest rate?");
   let interestRate = readline.question();
 
   while (isInvalidNumber(interestRate)) {
-    console.log(`${validAnswer}`);
+    let validRate = "Please enter a number 0 or greater.";
+    console.log(`${validRate}`);
     interestRate = readline.question();
   }
 
@@ -52,14 +53,16 @@ while (true) {
   }
 
   let annualInterestRate = Number(interestRate) / 100;
-  let monthlyInterestRate = annualInterestRate / 12;
+  let monthlyInterestRate = Number(annualInterestRate) / 12;
   let months = Number(years) * 12;
 
   let monthlyPayment =
-    Number(loan) *
-    (monthlyInterestRate /
-      (1 - Math.pow(1 + monthlyInterestRate, -Number(months))));
-
+    Number(amount) * (monthlyInterestRate /
+    (1 - Math.pow((1 + monthlyInterestRate), (-Number(months)))));
+  console.log(monthlyPayment);
+  if (interestRate === 0) {
+    monthlyPayment = amount * (years * 12);
+  }
   prompt(`Your monthly payment is $${monthlyPayment.toFixed(2)}`);
 
   prompt("Would you like to perform another calculation?");
