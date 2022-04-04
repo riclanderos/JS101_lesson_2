@@ -1,12 +1,12 @@
 const readline = require('readline-sync');
 const VALID_CHOICES = ['rock', 'paper', 'scissors'];
-
+console.log(VALID_CHOICES.length);
 function prompt(msg) {
   console.log(`=> ${msg}`);
 }
 
 function displayWinner(choice, computerChoice) {
-  prompt(`You chose ${choice}, computer chose${computerChoice}`);
+  prompt(`You chose ${choice}, computer chose ${computerChoice}`);
 
   if ((choice === 'rock' && computerChoice === 'scissors') ||
     (choice === 'paper' && computerChoice === 'rock') ||
@@ -31,7 +31,8 @@ while (true) {
     choice = readline.question();
   }
 
-  let randomIndex = Math.floor(Math.random() * VALID_CHOICES.length);
+  let randomIndex = Math.ceil(Math.random() * VALID_CHOICES.length) - 1;
+  console.log(randomIndex);
   let computerChoice = VALID_CHOICES[randomIndex];
 
   displayWinner(choice, computerChoice);
