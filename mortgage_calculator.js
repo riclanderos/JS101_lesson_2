@@ -11,7 +11,7 @@
 // Request duration of loan
 // Determine the monthly interest rate
 // Determine the loan duration in months
-
+/*
 const readline = require("readline-sync");
 
 function prompt(msg) {
@@ -74,4 +74,72 @@ while (true) {
   }
 
   if (answer[0] === "n") break;
+}*/
+// loan amount
+// APR
+// duration
+
+// need to calculate the monthly interest rate
+// calculate the loan duration in months
+
+// Greet user
+// Request loan amount
+// Request Annual Percentage Rate (APR)
+// Request duration of loan
+// Determine the monthly interest rate
+// Determine the loan duration in months
+const readline = require('readline-sync');
+
+function prompt(msg) {
+  console.log(`=> ${msg}`);
+}
+
+function validNumber(num) {
+  return num.trimStart() === '' || Number.isNaN(Number(num));
+}
+
+prompt('Welcome to the Mortgage Calculator');
+
+while (true) {
+  prompt('What is the amount of the loan?');
+  let loanAmount = readline.question();
+
+  while (validNumber(loanAmount)) {
+    prompt('Please enter a valid number.');
+    loanAmount = readline.question();
+  }
+
+  prompt('Please enter the interest rate.');
+  let interestRate = readline.question();
+
+  while (validNumber(interestRate)) {
+    prompt('Please enter a valid number.');
+    interestRate = readline.question();
+  }
+
+  prompt('Please enter the duration of the loan');
+  let loanDuration = readline.question();
+
+  while (validNumber(loanDuration)) {
+    prompt('Please enter a valid number.');
+    loanDuration = readline.question();
+  }
+
+  let annualPercentageRate = Number(interestRate) / 100;
+  let monthlyRate = annualPercentageRate / 12;
+  let months = Number(loanDuration) * 12;
+
+  let monthlyPayment = loanAmount * (monthlyRate /
+  (1 - Math.pow((1 + monthlyRate), (-months))));
+
+  prompt(`Your monthy payment is: $${monthlyPayment.toFixed(2)}`);
+
+  prompt("Would you like to do another calculation?");
+  let newCalculation = readline.question().toLowerCase();
+  while (newCalculation[0] !== 'n' && newCalculation[0] !== 'y') {
+    prompt("Please enter 'y' or 'n'.");
+    newCalculation = readline.question().toLowerCase();
+  }
+
+  if (newCalculation[0] === 'n') break;
 }

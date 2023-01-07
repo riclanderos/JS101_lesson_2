@@ -1,10 +1,10 @@
 {
-  "en": {
-    "welcome": "Welcome to Calculator! Enter your name:",
-    "validName": "Make sure to enter a valid name."
-  },
-  "es": {
-    "welcome": "Bienvenido a la calculadora! Entre su nombre:",
-    "validName": "Asegúrese de entrar un nombre válido."
-  }
+  "greeting": "Hello, welcome to the Calculator.",
+  "requestFirstNumber": "Please enter your first number:",
+  "requestSecondNumber": "Please enter your second number:",
+  "invalidNum": " This is not a valid number.",
+  "requestOperation": "What operation would you like to complete?\n1) Add 2) Subtract 3) Multiply 4) Divide",
+  "validChoice": "You must choose 1, 2, 3, or 4",
+  "newCalc": "Would you like to perform a new calculation? (y/n)",
+  "validLetter": "You must enter either 'y' to continue or 'n' to finish."
 }
